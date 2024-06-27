@@ -1,0 +1,254 @@
+package calculadora;
+
+import java.awt.EventQueue; 
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.BorderLayout;
+import javax.swing.JTextField;
+import java.awt.Color;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JPanel;
+
+public class calculoVectores {
+
+	private JFrame frame;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textFieldResultado;
+	
+	/**
+	* Launch the application.
+	*/
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					calculoVectores window = new calculoVectores();
+					window.frame.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+			}
+		});
+	}
+	
+	/**
+	* Create the application.
+	*/
+	public calculoVectores() {
+		initialize();
+	}
+	
+	/**
+	* Initialize the contents of the frame.
+	*/
+	private void initialize() {
+		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.BLACK);
+		frame.getContentPane().setForeground(new Color(0, 0, 0));
+		frame.setBounds(0, 0, 950, 800);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+	
+		JLabel lblIngreso1 = new JLabel("Ingrese el tamano del vector 1:");
+		lblIngreso1.setForeground(Color.WHITE);
+		lblIngreso1.setBounds(281, 221, 180, 20);
+		frame.getContentPane().add(lblIngreso1);
+	
+		textField = new JTextField();
+		textField.setBounds(455, 221, 86, 20);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JButton btnSuma = new JButton("Suma");
+		btnSuma.setForeground(Color.BLACK);
+		btnSuma.setBackground(Color.ORANGE);
+		btnSuma.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnSuma.setBounds(636, 220, 91, 32);
+		frame.getContentPane().add(btnSuma);
+		
+		JButton btnResta = new JButton("Resta");
+		btnResta.setForeground(Color.BLACK);
+		btnResta.setBackground(Color.ORANGE);
+		btnResta.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnResta.setBounds(636, 263, 91, 32);
+		frame.getContentPane().add(btnResta);
+	
+		JLabel lblIngreso2 = new JLabel("Ingrese el tamano del vector 2:");
+		lblIngreso2.setForeground(Color.WHITE);
+		lblIngreso2.setBounds(280, 265, 181, 14);
+		frame.getContentPane().add(lblIngreso2);
+	
+		textField_1 = new JTextField();
+		textField_1.setBounds(455, 262, 86, 20);
+		frame.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+	
+		JButton btnMulti = new JButton("Mult X Vec");
+		btnMulti.setForeground(Color.BLACK);
+		btnMulti.setBackground(Color.ORANGE);
+		btnMulti.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnMulti.setBounds(636, 306, 108, 32);
+		frame.getContentPane().add(btnMulti);
+	
+		JButton btnProductoEscalar = new JButton("Producto Escalar");
+		btnProductoEscalar.setForeground(Color.BLACK);
+		btnProductoEscalar.setBackground(Color.ORANGE);
+		btnProductoEscalar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnProductoEscalar.setBounds(636, 392, 134, 32);
+		frame.getContentPane().add(btnProductoEscalar);
+	
+		JLabel lblOperaciones = new JLabel("Operaciones");
+		lblOperaciones.setForeground(Color.WHITE);
+		lblOperaciones.setBounds(636, 187, 74, 22);
+		frame.getContentPane().add(lblOperaciones);
+	
+		JButton btnProductoVectorial = new JButton("Producto Vectorial");
+		btnProductoVectorial.setBackground(Color.ORANGE);
+		btnProductoVectorial.setForeground(Color.BLACK);
+		btnProductoVectorial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnProductoVectorial.setBounds(636, 349, 146, 32);
+		frame.getContentPane().add(btnProductoVectorial);
+	
+		JButton btnUno = new JButton("1");
+		btnUno.setForeground(Color.WHITE);
+		btnUno.setBackground(Color.DARK_GRAY);
+		btnUno.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnUno.setBounds(10, 216, 80, 80);
+		frame.getContentPane().add(btnUno);
+	
+		JButton btnDos = new JButton("2");
+		btnDos.setForeground(Color.WHITE);
+		btnDos.setBackground(Color.DARK_GRAY);
+		btnDos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnDos.setBounds(100, 216, 80, 80);
+		frame.getContentPane().add(btnDos);
+	
+		JButton btnTres = new JButton("3");
+		btnTres.setForeground(Color.WHITE);
+		btnTres.setBackground(Color.DARK_GRAY);
+		btnTres.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnTres.setBounds(190, 216, 80, 80);
+		frame.getContentPane().add(btnTres);
+	
+		JButton btnCuatro = new JButton("4");
+		btnCuatro.setForeground(Color.WHITE);
+		btnCuatro.setBackground(Color.DARK_GRAY);
+		btnCuatro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnCuatro.setBounds(10, 306, 80, 80);
+		frame.getContentPane().add(btnCuatro);
+	
+		JButton btnCinco = new JButton("5");
+		btnCinco.setForeground(Color.WHITE);
+		btnCinco.setBackground(Color.DARK_GRAY);
+		btnCinco.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnCinco.setBounds(100, 306, 80, 80);
+		frame.getContentPane().add(btnCinco);
+	
+		JButton btnSeis = new JButton("6");
+		btnSeis.setForeground(Color.WHITE);
+		btnSeis.setBackground(Color.DARK_GRAY);
+		btnSeis.setBounds(190, 306, 80, 80);
+		frame.getContentPane().add(btnSeis);
+	
+		JButton btnNewButton_11 = new JButton("7");
+		btnNewButton_11.setForeground(Color.WHITE);
+		btnNewButton_11.setBackground(Color.DARK_GRAY);
+		btnNewButton_11.setBounds(10, 396, 80, 80);
+		frame.getContentPane().add(btnNewButton_11);
+	
+		JButton btnOcho = new JButton("8");
+		btnOcho.setForeground(Color.WHITE);
+		btnOcho.setBackground(Color.DARK_GRAY);
+		btnOcho.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnOcho.setBounds(100, 396, 80, 80);
+		frame.getContentPane().add(btnOcho);
+	
+		JButton btnNueve = new JButton("9");
+		btnNueve.setForeground(Color.WHITE);
+		btnNueve.setBackground(Color.DARK_GRAY);
+		btnNueve.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNueve.setBounds(190, 396, 80, 80);
+		frame.getContentPane().add(btnNueve);
+	
+		JLabel lblVector1 = new JLabel("Vector 1 = ");
+		lblVector1.setForeground(Color.WHITE);
+		lblVector1.setBounds(281, 306, 74, 14);
+		frame.getContentPane().add(lblVector1);
+	
+		JLabel lblVector2 = new JLabel("Vector 2 =");
+		lblVector2.setForeground(Color.WHITE);
+		lblVector2.setBounds(281, 347, 74, 14);
+		frame.getContentPane().add(lblVector2);
+		
+		JButton btnEnviar1 = new JButton("Enviar");
+		btnEnviar1.setBackground(Color.ORANGE);
+		btnEnviar1.setForeground(Color.BLACK);
+		btnEnviar1.setBounds(546, 220, 80, 23);
+		frame.getContentPane().add(btnEnviar1);
+		
+		JButton btnEnviar2 = new JButton("Enviar");
+		btnEnviar2.setBackground(Color.ORANGE);
+		btnEnviar2.setForeground(Color.BLACK);
+		btnEnviar2.setBounds(546, 261, 80, 23);
+		frame.getContentPane().add(btnEnviar2);
+		
+		JLabel lblTeclado = new JLabel("Teclado");
+		lblTeclado.setForeground(Color.WHITE);
+		lblTeclado.setBounds(10, 187, 46, 14);
+		frame.getContentPane().add(lblTeclado);
+		
+		textFieldResultado = new JTextField();
+		textFieldResultado.setForeground(Color.BLACK);
+		textFieldResultado.setBackground(Color.WHITE);
+		textFieldResultado.setEditable(false);
+		textFieldResultado.setBounds(10, 24, 616, 138);
+		frame.getContentPane().add(textFieldResultado);
+		textFieldResultado.setColumns(10);
+		
+		JLabel lblIngreso = new JLabel("Ingreso");
+		lblIngreso.setForeground(Color.WHITE);
+		lblIngreso.setBounds(281, 191, 46, 14);
+		frame.getContentPane().add(lblIngreso);
+	
+	}
+}
