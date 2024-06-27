@@ -238,10 +238,10 @@ public class calculoVectores {
 		frame.getContentPane().add(lblTeclado);
 		
 		textFieldResultado = new JTextField();
-		textFieldResultado.setForeground(Color.BLACK);
-		textFieldResultado.setBackground(Color.WHITE);
+		textFieldResultado.setForeground(Color.WHITE);
+		textFieldResultado.setBackground(Color.DARK_GRAY);
 		textFieldResultado.setEditable(false);
-		textFieldResultado.setBounds(10, 24, 616, 138);
+		textFieldResultado.setBounds(10, 22, 616, 135);
 		frame.getContentPane().add(textFieldResultado);
 		textFieldResultado.setColumns(10);
 		
