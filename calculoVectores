@@ -1,17 +1,4 @@
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import java.awt.Color;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.util.Arrays;
-import java.awt.event.ActionEvent;
-import java.awt.SystemColor;
-
-public class calculoVectores {
 
 	private JFrame frame;
 	private JTextField textFieldPanel;
@@ -310,8 +297,18 @@ public class calculoVectores {
 		btnEnviarVector.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String v1 = textFieldPanel.getText();
+			int i, j, n;
+			String v1[3], v2[3];
+			for(j = 0; j < 3; j++) {
+				String vector1 = textFieldPanel.getText();
+				double v1[i] = Double.parseDouble(textFieldPanel.getText());
 				
+			}
+			for(i = 0; i < 3; i++){	
+				String vector2 = textFieldPanel.getText();
+				double v2[j] = Double.parseDouble(textFieldPanel.getText());
+			}
+								
 			}
 		});
 		btnEnviarVector.setForeground(Color.BLACK);
