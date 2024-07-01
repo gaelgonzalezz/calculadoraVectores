@@ -1,335 +1,208 @@
+import javax.swing.*;
 
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-	private JFrame frame;
-	private JTextField textFieldPanel;
-	
-	class Operaciones {
-        public static double[] suma(double[] v1, double[] v2) {
-            if (v1.length!= v2.length) throw new IllegalArgumentException("Los vectores deben tener la misma longitud.");
-            double[] result = new double[v1.length];
-            for (int i = 0; i < v1.length; i++) {
-                result[i] = v1[i] + v2[i];
+public class calculoVectores extends JFrame {
+    private JTextField textFieldVector1;
+    private JTextField textFieldVector2;
+    private JTextField textFieldEscalar;
+    private JLabel lblResultado;
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    calculoVectores frame = new calculoVectores();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-            return result;
-        }
-
-        public static double[] resta(double[] v1, double[] v2) {
-            if (v1.length!= v2.length) throw new IllegalArgumentException("Los vectores deben tener la misma longitud.");
-            double[] result = new double[v1.length];
-            for (int i = 0; i < v1.length; i++) {
-                result[i] = v1[i] - v2[i];
-            }
-            return result;
-        }
-
-        public static double[] multiplicacionEscalar(double[] v, double scalar) {
-            double[] result = new double[v.length];
-            for (int i = 0; i < v.length; i++) {
-                result[i] = v[i] * scalar;
-            }
-            return result;
-        }
-
-        public static double productoEscalar(double[] v1, double[] v2) {
-            if (v1.length!= v2.length) throw new IllegalArgumentException("Los vectores deben tener la misma longitud.");
-            double result = 0;
-            for (int i = 0; i < v1.length; i++) {
-                result += v1[i] * v2[i];
-            }
-            return result;
-        }
-
-        public static double productoVectorial(double[] v1, double[] v2) {
-            if (v1.length!= v2.length) throw new IllegalArgumentException("Los vectores deben tener la misma longitud.");
-            double x = v1[0] * v2[1] - v1[1] * v2[0];
-            double y = v1[0] * v2[2] - v1[2] * v2[0];
-            double z = v1[1] * v2[2] - v1[2] * v2[1];
-            return Math.sqrt(x * x + y * y + z * z);
-        }
+        });
     }
 
- 
-/**
-	* Launch the application.
-	*/
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					calculoVectores window = new calculoVectores();
-					window.frame.setVisible(true);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-			}
-		});
-	}
-	
-	/**
-	* Create the application.
-	*/
-	public calculoVectores() {
-		initialize();
-	}
-	
-	/**
-	* Initialize the contents of the frame.
-	*/
-	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.BLACK);
-		frame.getContentPane().setForeground(new Color(0, 0, 0));
-		frame.setBounds(0, 0, 800, 600);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		
-		textFieldPanel = new JTextField();
-		textFieldPanel.setForeground(Color.WHITE);
-		textFieldPanel.setBackground(Color.DARK_GRAY);
-		
-		JButton btnSuma = new JButton("Suma");
-		btnSuma.setForeground(Color.BLACK);
-		btnSuma.setBackground(Color.ORANGE);
-		btnSuma.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnSuma.setBounds(250, 130, 146, 32);
-		frame.getContentPane().add(btnSuma);
-	
-		
-		JButton btnResta = new JButton("Resta");
-		btnResta.setForeground(Color.BLACK);
-		btnResta.setBackground(Color.ORANGE);
-		btnResta.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnResta.setBounds(250, 168, 146, 32);
-		frame.getContentPane().add(btnResta);
-	
-		JButton btnMulti = new JButton("Mult X Vec");
-		btnMulti.setForeground(Color.BLACK);
-		btnMulti.setBackground(Color.ORANGE);
-		btnMulti.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnMulti.setBounds(250, 211, 146, 68);
-		frame.getContentPane().add(btnMulti);
-		
+    public calculoVectores() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(0, 0, 700, 500);
+        getContentPane().setLayout(null);
 
-	
-		JButton btnProductoEscalar = new JButton("Producto Escalar");
-		btnProductoEscalar.setForeground(Color.BLACK);
-		btnProductoEscalar.setBackground(Color.ORANGE);
-		btnProductoEscalar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnProductoEscalar.setBounds(250, 370, 146, 70);
-		frame.getContentPane().add(btnProductoEscalar);
-	
-	
-		JButton btnProductoVectorial = new JButton("Producto Vectorial");
-		btnProductoVectorial.setBackground(Color.ORANGE);
-		btnProductoVectorial.setForeground(Color.BLACK);
-		btnProductoVectorial.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnProductoVectorial.setBounds(250, 290, 146, 69);
-		frame.getContentPane().add(btnProductoVectorial);
+        JLabel lblVector1 = new JLabel("Vector 1:");
+        lblVector1.setBounds(10, 42, 86, 14);
+        getContentPane().add(lblVector1);
 
-	
-		JButton btnUno = new JButton("1");
-		btnUno.setForeground(Color.WHITE);
-		btnUno.setBackground(Color.GRAY);
-		btnUno.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-							
-			 String b1 = "1";
-			 textFieldPanel.setText(textFieldPanel.getText()+b1);
-			 
-			}
-			
-		}
-		);
-		btnUno.setBounds(10, 130, 70, 70);
-		frame.getContentPane().add(btnUno);
-	
-		JButton btnDos = new JButton("2");
-		btnDos.setForeground(Color.WHITE);
-		btnDos.setBackground(Color.GRAY);
-		btnDos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String b2 = "2";
-				textFieldPanel.setText(textFieldPanel.getText()+b2);
-				
-			}
-		});
-		btnDos.setBounds(90, 130, 70, 70);
-		frame.getContentPane().add(btnDos);
-	
-		JButton btnTres = new JButton("3");
-		btnTres.setForeground(Color.WHITE);
-		btnTres.setBackground(Color.GRAY);
-		btnTres.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String b3 = "3";
-				textFieldPanel.setText(textFieldPanel.getText()+b3);
-				
-			}
-		});
-		btnTres.setBounds(170, 130, 70, 70);
-		frame.getContentPane().add(btnTres);
-		
-		JButton btnCuatro = new JButton("4");
-		btnCuatro.setForeground(Color.WHITE);
-		btnCuatro.setBackground(Color.GRAY);
-		btnCuatro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String b4 = "4";
-				textFieldPanel.setText(textFieldPanel.getText()+b4);
-				
-			}
-		});
-		btnCuatro.setBounds(10, 211, 70, 70);
-		frame.getContentPane().add(btnCuatro);
-		
-		JButton btnCinco = new JButton("5");
-		btnCinco.setForeground(Color.WHITE);
-		btnCinco.setBackground(Color.GRAY);
-		btnCinco.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String b5 = "5";
-				textFieldPanel.setText(textFieldPanel.getText()+b5);
-				
-			}
-		});
-		btnCinco.setBounds(90, 211, 70, 70);
-		frame.getContentPane().add(btnCinco);
+        textFieldVector1 = new JTextField();
+        textFieldVector1.setBounds(106, 39, 307, 20);
+        getContentPane().add(textFieldVector1);
+        textFieldVector1.setColumns(10);
 
-		
-		JButton btnSeis = new JButton("6");
-		btnSeis.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String b6 = "6";
-				textFieldPanel.setText(textFieldPanel.getText()+b6);
-				
-			}
-		});
-		btnSeis.setForeground(Color.WHITE);
-		btnSeis.setBackground(Color.GRAY);
-		btnSeis.setBounds(170, 210, 70, 70);
-		frame.getContentPane().add(btnSeis);
+        JLabel lblVector2 = new JLabel("Vector 2:");
+        lblVector2.setBounds(10, 75, 86, 14);
+        getContentPane().add(lblVector2);
 
-	
-		JButton btnSiete = new JButton("7");
-		btnSiete.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String b7 = "7";
-				textFieldPanel.setText(textFieldPanel.getText()+b7);
-			}
-		});
-		btnSiete.setForeground(Color.WHITE);
-		btnSiete.setBackground(Color.GRAY);
-		btnSiete.setBounds(10, 289, 70, 70);
-		frame.getContentPane().add(btnSiete);
+        textFieldVector2 = new JTextField();
+        textFieldVector2.setBounds(106, 72, 307, 20);
+        getContentPane().add(textFieldVector2);
+        textFieldVector2.setColumns(10);
 
-	
-		JButton btnOcho = new JButton("8");
-		btnOcho.setForeground(Color.WHITE);
-		btnOcho.setBackground(Color.GRAY);
-		btnOcho.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String b8 = "8";
-				textFieldPanel.setText(textFieldPanel.getText()+b8);
-			}
-		});
-		btnOcho.setBounds(90, 289, 70, 70);
-		frame.getContentPane().add(btnOcho);
+        JLabel lblEscalar = new JLabel("Escalar:");
+        lblEscalar.setBounds(10, 106, 86, 14);
+        getContentPane().add(lblEscalar);
 
-	
-		JButton btnNueve = new JButton("9");
-		btnNueve.setForeground(Color.WHITE);
-		btnNueve.setBackground(Color.GRAY);
-		btnNueve.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-						
-					String b9 = "9";
-					textFieldPanel.setText(textFieldPanel.getText()+b9);
-						
-				}
-			});
-		btnNueve.setBounds(170, 290, 70, 70);
-		frame.getContentPane().add(btnNueve);
-		
+        textFieldEscalar = new JTextField();
+        textFieldEscalar.setBounds(106, 103, 86, 20);
+        getContentPane().add(textFieldEscalar);
+        textFieldEscalar.setColumns(10);
 
-		textFieldPanel.setEditable(false);
-		textFieldPanel.setBounds(10, 11, 386, 98);
-		frame.getContentPane().add(textFieldPanel);
-		textFieldPanel.setColumns(10);
-		
-		JButton btnCero = new JButton("0");
-		btnCero.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String b0 = "0";
-				textFieldPanel.setText(textFieldPanel.getText()+b0);
-				
-			}
-		});
-		btnCero.setBackground(Color.GRAY);
-		btnCero.setForeground(Color.WHITE);
-		btnCero.setBounds(90, 370, 70, 70);
-		frame.getContentPane().add(btnCero);
-		
-		JButton btnEnviarVector = new JButton("Enviar");
-		btnEnviarVector.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			int i, j, n;
-			String v1[3], v2[3];
-			for(j = 0; j < 3; j++) {
-				String vector1 = textFieldPanel.getText();
-				double v1[i] = Double.parseDouble(textFieldPanel.getText());
-				
-			}
-			for(i = 0; i < 3; i++){	
-				String vector2 = textFieldPanel.getText();
-				double v2[j] = Double.parseDouble(textFieldPanel.getText());
-			}
-								
-			}
-		});
-		btnEnviarVector.setForeground(Color.BLACK);
-		btnEnviarVector.setBackground(Color.ORANGE);
-		btnEnviarVector.setBounds(170, 370, 70, 70);
-		frame.getContentPane().add(btnEnviarVector);
-		
-		JButton btnBorrar = new JButton("Borrar");
-		btnBorrar.setForeground(Color.BLACK);
-		btnBorrar.setBackground(Color.ORANGE);
-		btnBorrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				String borrar = textFieldPanel.getText().substring(0, textFieldPanel.getText().length() -1);
-				textFieldPanel.setText(borrar);
-				
-			}
-		});
-		btnBorrar.setBounds(10, 370, 70, 70);
-		frame.getContentPane().add(btnBorrar);
-	
-	
-	}
+        lblResultado = new JLabel("Resultado:");
+        lblResultado.setBounds(10, 186, 500, 14);
+        getContentPane().add(lblResultado);
+
+        JButton btnSuma = new JButton("Suma");
+        btnSuma.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    double[] v1 = parseVector(textFieldVector1.getText());
+                    double[] v2 = parseVector(textFieldVector2.getText());
+                    double[] result = suma(v1, v2);
+                    lblResultado.setText("Resultado: " + vectorToString(result));
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+                }
+            }
+        });
+        btnSuma.setBounds(7, 152, 89, 23);
+        getContentPane().add(btnSuma);
+
+        JButton btnResta = new JButton("Resta");
+        btnResta.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    double[] v1 = parseVector(textFieldVector1.getText());
+                    double[] v2 = parseVector(textFieldVector2.getText());
+                    double[] result = resta(v1, v2);
+                    lblResultado.setText("Resultado: " + vectorToString(result));
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+                }
+            }
+        });
+        btnResta.setBounds(106, 152, 89, 23);
+        getContentPane().add(btnResta);
+
+        JButton btnMultiplicacionEscalar = new JButton("Multiplicar Escalar");
+        btnMultiplicacionEscalar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    double[] v1 = parseVector(textFieldVector1.getText());
+                    double escalar = Double.parseDouble(textFieldEscalar.getText());
+                    double[] result = multiplicacionEscalar(v1, escalar);
+                    lblResultado.setText("Resultado: " + vectorToString(result));
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+                }
+            }
+        });
+        btnMultiplicacionEscalar.setBounds(205, 152, 150, 23);
+        getContentPane().add(btnMultiplicacionEscalar);
+
+        JButton btnProductoEscalar = new JButton("Producto Escalar");
+        btnProductoEscalar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    double[] v1 = parseVector(textFieldVector1.getText());
+                    double[] v2 = parseVector(textFieldVector2.getText());
+                    double result = productoEscalar(v1, v2);
+                    lblResultado.setText("Resultado: " + result);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+                }
+            }
+        });
+        btnProductoEscalar.setBounds(365, 152, 142, 23);
+        getContentPane().add(btnProductoEscalar);
+
+        JButton btnProductoVectorial = new JButton("Producto Vectorial");
+        btnProductoVectorial.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    double[] v1 = parseVector(textFieldVector1.getText());
+                    double[] v2 = parseVector(textFieldVector2.getText());
+                    double[] result = productoVectorial(v1, v2);
+                    lblResultado.setText("Resultado: " + vectorToString(result));
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+                }
+            }
+        });
+        btnProductoVectorial.setBounds(517, 152, 160, 23);
+        getContentPane().add(btnProductoVectorial);
+        
+        JLabel lblAviso = new JLabel("Los vectores deben ser del mismo tama\u00F1o");
+        lblAviso.setBounds(10, 11, 351, 23);
+        getContentPane().add(lblAviso);
+    }
+
+    private double[] parseVector(String text) {
+        String[] parts = text.split(",");
+        double[] vector = new double[parts.length];
+        for (int i = 0; i < parts.length; i++) {
+            vector[i] = Double.parseDouble(parts[i]);
+        }
+        return vector;
+    }
+
+    private String vectorToString(double[] vector) {
+        StringBuilder sb = new StringBuilder();
+        for (double v : vector) {
+            sb.append(v).append(", ");
+        }
+        return sb.substring(0, sb.length() - 2);
+    }
+
+    public static double[] suma(double[] v1, double[] v2) {
+        if (v1.length != v2.length) throw new IllegalArgumentException("Los vectores deben tener la misma longitud.");
+        double[] result = new double[v1.length];
+        for (int i = 0; i < v1.length; i++) {
+            result[i] = v1[i] + v2[i];
+        }
+        return result;
+    }
+
+    public static double[] resta(double[] v1, double[] v2) {
+        if (v1.length != v2.length) throw new IllegalArgumentException("Los vectores deben tener la misma longitud.");
+        double[] result = new double[v1.length];
+        for (int i = 0; i < v1.length; i++) {
+            result[i] = v1[i] - v2[i];
+        }
+        return result;
+    }
+
+    public static double[] multiplicacionEscalar(double[] v, double escalar) {
+        double[] result = new double[v.length];
+        for (int i = 0; i < v.length; i++) {
+            result[i] = v[i] * escalar;
+        }
+        return result;
+    }
+
+    public static double productoEscalar(double[] v1, double[] v2) {
+        if (v1.length != v2.length) throw new IllegalArgumentException("Los vectores deben tener la misma longitud.");
+        double result = 0;
+        for (int i = 0; i < v1.length; i++) {
+            result += v1[i] * v2[i];
+        }
+        return result;
+    }
+
+    public static double[] productoVectorial(double[] v1, double[] v2) {
+        if (v1.length != 3 || v2.length != 3) throw new IllegalArgumentException("Los vectores deben tener 3 elementos.");
+        double[] result = new double[3];
+        result[0] = v1[1] * v2[2] - v1[2] * v2[1];
+        result[1] = v1[2] * v2[0] - v1[0] * v2[2];
+        result[2] = v1[0] * v2[1] - v1[1] * v2[0];
+        return result;
+    }
 }
+
